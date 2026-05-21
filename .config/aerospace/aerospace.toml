@@ -1,0 +1,137 @@
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+start-at-login = true
+
+[gaps]
+inner.horizontal = 4
+inner.vertical =   4
+outer.left =       4
+outer.bottom =     4
+outer.top =        4
+outer.right =      4
+
+[mode.main.binding]
+cmd-alt-h = []
+cmd-h = []
+
+alt-q = 'split horizontal'
+alt-w = 'split vertical'
+alt-f = 'fullscreen'
+alt-shift-space = 'layout floating tiling'
+
+alt-shift-r = 'reload-config'
+alt-r = 'mode resize'
+alt-z = 'mode pane'
+alt-semicolon = 'mode monitor'
+
+[mode.pane.binding]
+shift-1 = 'move-node-to-workspace 1'
+shift-2 = 'move-node-to-workspace 2'
+shift-3 = 'move-node-to-workspace 3'
+shift-4 = 'move-node-to-workspace 4'
+shift-5 = 'move-node-to-workspace 5'
+shift-6 = 'move-node-to-workspace 6'
+shift-7 = 'move-node-to-workspace 7'
+shift-8 = 'move-node-to-workspace 8'
+shift-9 = 'move-node-to-workspace 9'
+
+1 = 'workspace 1'
+2 = 'workspace 2'
+3 = 'workspace 3'
+4 = 'workspace 4'
+5 = 'workspace 5'
+6 = 'workspace 6'
+7 = 'workspace 7'
+8 = 'workspace 8'
+9 = 'workspace 9'
+
+h = 'focus --boundaries-action wrap-around-the-workspace left'
+j = 'focus --boundaries-action wrap-around-the-workspace down'
+k = 'focus --boundaries-action wrap-around-the-workspace up'
+l = 'focus --boundaries-action wrap-around-the-workspace right'
+f = 'fullscreen'
+
+shift-h = 'move left'
+shift-j = 'move down'
+shift-k = 'move up'
+shift-l = 'move right'
+
+enter = 'mode main'
+esc = 'mode main'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+[mode.monitor.binding]
+h = 'focus-monitor left'
+j = 'focus-monitor down'
+k = 'focus-monitor up'
+l = 'focus-monitor right'
+
+shift-h = 'move-node-to-monitor left'
+shift-j = 'move-node-to-monitor down'
+shift-k = 'move-node-to-monitor up'
+shift-l = 'move-node-to-monitor right'
+
+enter = 'mode main'
+esc = 'mode main'
+
+[[on-window-detected]]
+if.app-id = 'eu.davidbures.cork'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.culturedcode.ThingsMac'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 1', 'layout floating', 'fullscreen']
+
+[[on-window-detected]]
+if.app-id = 'com.kagi.kagimacOS'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'dev.vencord.vesktop'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'org.whispersystems.signal-desktop'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.pycharm'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.rider'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.datagrip'
+run = 'move-node-to-workspace 3'

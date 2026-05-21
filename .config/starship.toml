@@ -1,0 +1,34 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = 'carbonfox'
+
+format = """
+$status\
+[ █](fg:light)\
+$directory\
+[ ](fg:light)\
+$line_break"""
+
+[palettes.gruvbox]
+dark = '#32302F'
+light = '#D4BE98'
+red = "#cc241d"
+
+[palettes.carbonfox]
+dark = '#0C0C0C'
+light = '#b6b8bb'
+red = "#ee5396"
+
+[directory]
+format = "[ $path ](fg:light bg:dark)"
+truncation_length = 2
+truncation_symbol = "…/"
+
+[status]
+disabled = false
+format = '[$symbol$status]($style)'
+style = "bold red"
+symbol = "✗ "
+success_symbol = ""
+map_symbol = false
+recognize_signal_code = false

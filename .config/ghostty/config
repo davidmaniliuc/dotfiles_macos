@@ -1,0 +1,31 @@
+window-decoration = true
+theme = "carbonfox"
+window-padding-balance = true
+
+keybind = cmd+d=unbind
+keybind = cmd+shift+d=unbind
+keybind = cmd+0=unbind
+
+keybind = cmd+à=reset_font_size
+
+keybind = cmd+g>shift+s=new_split:left
+keybind = cmd+g>s=new_split:right
+keybind = cmd+g>d=new_split:down
+keybind = cmd+g>shift+d=new_split:up
+
+keybind = cmd+g>h=goto_split:left
+keybind = cmd+g>j=goto_split:down
+keybind = cmd+g>k=goto_split:up
+keybind = cmd+g>l=goto_split:right
+
+keybind = cmd+g>c=new_tab
+keybind = cmd+g>z=toggle_split_zoom
+keybind = cmd+g>x=close_surface
+
+keybind = global:cmd+shift+space=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-size = 50%,50%
+
+# background-opacity = 0.98
+# background-blur = true
+# vim: ft=ini
