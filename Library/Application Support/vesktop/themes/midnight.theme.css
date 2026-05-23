@@ -172,3 +172,9 @@ body {
   --purple-4: oklch(63% 0.13 300); /* dim ~#a27fd9 */
   --purple-5: oklch(58% 0.13 300);
 }
+
+div:has(> a[href="/shop"]),
+div:has(> a[href="/store"]),
+div:has(> a[data-list-item-id*="quests"]) {
+  display: none !important;
+}
