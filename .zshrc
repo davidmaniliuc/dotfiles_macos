@@ -24,7 +24,6 @@ alias ani='ani-cli'
 alias cat='bat'
 alias lsblk='lsblk | bat -l conf -p'
 alias cd='z'
-alias nix-clean='nix-env --delete-generations old; nix-store --gc'
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias du='du -h'
@@ -40,7 +39,8 @@ function h() {
 bindkey -e # the vim mode in enabled if $EDITOR is set to vim
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^e' end-of-line
+bindkey '^x' edit-command-line
 
 hexyl() {
     /opt/homebrew/bin/hexyl "$@" | bat -p
