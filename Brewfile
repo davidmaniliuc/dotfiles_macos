@@ -7,6 +7,8 @@ brew "bat"
 brew "bun"
 # XML-based font configuration API for X Windows
 brew "fontconfig"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
+brew "chafa"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -16,7 +18,7 @@ brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # .NET Core
 brew "dotnet"
 # Linux utility to get information on filesystems, like df but better
@@ -43,8 +45,12 @@ brew "grep"
 brew "hexyl"
 # Improved top (interactive process viewer)
 brew "htop"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick-full", link: true
 # Postgres C API library
 brew "libpq"
+# Blazingly fast interpolated LUT generator and applicator for color palettes
+brew "lutgen"
 # Mac App Store command-line interface
 brew "mas"
 # Development kit for the Java programming language
@@ -105,22 +111,20 @@ cask "nikitabobko/tap/aerospace"
 cask "android-platform-tools"
 # Memory training application
 cask "anki"
-# Terminal interface for Antigravity agents
-cask "antigravity-cli"
-# Web browser focusing on privacy
-cask "brave-browser"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # GUI companion app for Homebrew
 cask "cork"
 # Developer platform
 cask "dotnet-sdk"
-# Per-application volume mixer, equalizer, and audio router
-cask "finetune"
 cask "font-ibm-plex-sans"
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Chromium-based web browser
+cask "helium-browser"
 # Free and open-source media player
 cask "iina"
 # Java IDE by JetBrains
@@ -131,8 +135,6 @@ cask "maccy"
 cask "middleclick"
 # Discord music status that works with any media player
 cask "music-presence"
-# WebKit based web browser
-cask "orion"
 # Colour picker for colours onscreen
 cask "pika"
 # IDE for professional Python development
@@ -156,5 +158,7 @@ cask "webstorm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 mas "Things", id: 904280696
+mas "uBlock Origin Lite", id: 6745342698
+mas "Windows App", id: 1295203466
 vscode "myriad-dreamin.tinymist"
 vscode "vscodevim.vim"

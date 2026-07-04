@@ -1,4 +1,5 @@
-# Reference: https://github.com/i3/i3/blob/next/etc/config
+config-version = 2
+
 enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
@@ -97,11 +98,11 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace 1', 'layout floating', 'fullscreen']
 
 [[on-window-detected]]
-if.app-id = 'com.kagi.kagimacOS'
+if.app-id = 'net.imput.helium'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
+if.app-id = 'com.apple.Safari'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
