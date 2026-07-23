@@ -8,11 +8,11 @@ start-at-login = true
 
 [gaps]
 inner.horizontal = 4
-inner.vertical =   4
-outer.left =       4
-outer.bottom =     4
-outer.top =        4
-outer.right =      4
+inner.vertical   = 4
+outer.left       = 4
+outer.bottom     = 4
+outer.top        = 4
+outer.right      = 4
 
 [mode.main.binding]
 cmd-alt-h = []
@@ -120,6 +120,10 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.WebStorm'
 run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.rdc.macos'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'dev.vencord.vesktop'
