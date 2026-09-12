@@ -1,5 +1,5 @@
 window-decoration = true
-theme = "carbonfox"
+theme = carbonfox
 window-padding-balance = true
 
 keybind = cmd+d=unbind

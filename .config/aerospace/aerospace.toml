@@ -94,6 +94,16 @@ if.app-id = 'com.culturedcode.ThingsMac'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Swiftcord'
+if.window-title-regex-substring = 'Account'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Swiftcord'
+if.window-title-regex-substring = '\|'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace 1', 'layout floating', 'fullscreen']
 
@@ -130,11 +140,19 @@ if.app-id = 'dev.vencord.vesktop'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
+if.app-id = 'app.swiftcord'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
 if.app-id = 'org.whispersystems.signal-desktop'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]

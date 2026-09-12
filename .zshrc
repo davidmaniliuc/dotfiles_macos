@@ -3,6 +3,7 @@ export MANPAGER='nvim +Man!'
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export LS_COLORS="$LS_COLORS:ow=01;36:"
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

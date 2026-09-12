@@ -33,7 +33,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'black' },
+        python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         c = { 'clang-format' },
         ocaml = { 'ocamlformat' },
         javascript = { 'prettier' },

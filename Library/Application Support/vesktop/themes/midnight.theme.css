@@ -1,5 +1,0 @@
-div:has(> a[href="/shop"]),
-div:has(> a[href="/store"]),
-div:has(> a[data-list-item-id*="quests"]) {
-  display: none !important;
-}
