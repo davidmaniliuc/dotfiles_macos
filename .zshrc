@@ -55,3 +55,8 @@ eval "$(starship init zsh)"
 source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "/Users/david/.zsh-fzf-tab/fzf-tab.plugin.zsh"
+
+# Language servers and formatters installed by the nvim config's
+# scripts/install-tools.sh: gopls lands in ~/go/bin, ruff and ty in ~/.local/bin.
+# Both Neovim and Claude Code shell out to these, so they belong on the system PATH.
+export PATH="$HOME/go/bin:$HOME/.local/bin:$PATH"
