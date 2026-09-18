@@ -4,7 +4,7 @@ vim.schedule(function()
       -- NvChad's telescope proportions and prompt glyphs.
       prompt_prefix = '   ',
       selection_caret = '  ',
-      entry_prefix = '   ',
+      entry_prefix = '  ',
       sorting_strategy = 'ascending',
       layout_strategy = 'horizontal',
       borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },

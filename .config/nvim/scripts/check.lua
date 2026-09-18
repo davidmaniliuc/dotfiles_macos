@@ -382,6 +382,7 @@ check("telescope setup{} took effect, per telescope's own resolved config", func
   -- NvChad's proportions and prompt glyphs.
   eq(values.prompt_prefix, '   ', 'prompt_prefix')
   eq(values.selection_caret, '  ', 'selection_caret')
+  eq(values.entry_prefix, '  ', 'entry_prefix')
   eq(values.layout_config.width, 0.87, 'layout_config.width')
   eq(values.layout_config.height, 0.80, 'layout_config.height')
   eq(values.layout_config.horizontal.preview_width, 0.55, 'horizontal.preview_width')
