@@ -1,6 +1,6 @@
 # nvim
 
-A lean Neovim 0.12 configuration: 13 plugins, native LSP, native completion,
+A lean Neovim 0.12 configuration: 14 plugins, native LSP, native completion,
 `vim.pack` for package management, and no editor-scoped binary installer.
 
 Claude Code is the primary editor here. Neovim reads code, navigates it, reviews
@@ -53,8 +53,8 @@ Leader is `<Space>`.
 `<leader>q` diagnostics to loclist
 
 ### Other
-`-` oil · `<leader>F` format · `H` / `L` buffers · `<leader>bk` kill buffer ·
-`<leader>bd` kill others · `s` surround prefix (`sa` add, `sd` delete, `sr` replace)
+`-` oil · `<leader>F` format · `H` / `L` buffers · `<A-Tab>` toggle buffer tabs ·
+`<leader>bk` kill buffer · `<leader>bd` kill others · `s` surround prefix (`sa` add, `sd` delete, `sr` replace)
 
 ## Maintaining
 
@@ -80,6 +80,7 @@ NVIM_APPNAME=nvim-next nvim --headless -c "luafile $PWD/scripts/check.lua" -c 'q
 
 No mason (system toolchains instead, so Claude Code sees the same binaries).
 No completion plugin (`vim.lsp.completion`). No DAP (debug in the terminal).
+No statusline plugin: the statusline is Neovim's stock one.
 No Claude Code integration plugin. No leap.nvim: its GitHub repository was
 emptied upstream (2026-09-07, the author moved to Codeberg), so the motion
 layer was dropped by choice rather than repointed at a new source. No autosave

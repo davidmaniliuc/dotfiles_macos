@@ -191,9 +191,10 @@ local EXPECTED_PLUGINS = {
   'oil.nvim',
   'mini.nvim',
   'nightfox.nvim',
+  'bufferline.nvim',
 }
 
-check('all 13 plugins are installed and active', function()
+check('all 14 plugins are installed and active', function()
   local active = {}
   for _, p in ipairs(vim.pack.get()) do
     if p.active then
@@ -244,9 +245,25 @@ check('mini.icons mocks nvim-web-devicons', function()
   assert(package.loaded['nvim-web-devicons'] ~= nil or pcall(require, 'nvim-web-devicons'), 'devicons shim missing')
 end)
 
-check('mini.statusline drives the global statusline', function()
-  assert(vim.o.statusline:match 'MiniStatusline', 'statusline is ' .. vim.o.statusline)
+-- The statusline is deliberately Neovim's stock one -- mini.statusline was
+-- removed at the user's request. This asserts the absence rather than a
+-- presence, because re-adding `require('mini.statusline').setup()` to
+-- lua/plugins/mini.lua is the realistic regression and it would set both of
+-- the things checked below.
+check('the statusline is stock, not mini.statusline', function()
+  assert(not vim.o.statusline:match 'MiniStatusline', 'statusline is ' .. vim.o.statusline)
+  assert(_G.MiniStatusline == nil, 'MiniStatusline global exists, so mini.statusline was set up')
   eq(vim.o.laststatus, 3, 'laststatus')
+end)
+
+-- `%!v:lua.nvim_bufferline()` is written into 'tabline' by bufferline.setup()
+-- and by nothing else, so this fails if the setup call is removed or errors --
+-- including the devicons-ordering failure, since bufferline asks for
+-- nvim-web-devicons and only mini.icons' mock supplies it.
+check('bufferline renders the tab line', function()
+  eq(vim.o.tabline, '%!v:lua.nvim_bufferline()', 'tabline')
+  eq(vim.o.showtabline, 2, 'showtabline')
+  assert_maps('n', { '<A-Tab>' })
 end)
 
 check('mini.surround and mini.ai are set up', function()

@@ -3,7 +3,9 @@ vim.o.pumheight = 10
 vim.o.cmdheight = 0
 vim.o.conceallevel = 0
 vim.o.laststatus = 3
-vim.o.showtabline = 0
+vim.o.showtabline = 2
+-- bufferline's hover effect needs mouse-move reporting.
+vim.o.mousemoveevent = true
 vim.opt.fillchars:append { eob = ' ' }
 
 vim.o.number = true

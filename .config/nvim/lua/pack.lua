@@ -52,6 +52,7 @@ vim.pack.add({
   gh 'stevearc/oil.nvim',
   { src = gh 'nvim-mini/mini.nvim', version = 'stable' },
   gh 'EdenEast/nightfox.nvim',
+  gh 'akinsho/bufferline.nvim',
 }, {
   -- Default is true, which blocks headless runs on a confirmation prompt.
   confirm = false,

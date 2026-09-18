@@ -1,6 +1,7 @@
--- Five modules, one repository.
+-- Four modules, one repository. mini.statusline is deliberately absent:
+-- the statusline is Neovim's stock one.
 --
--- Ruling S2-T11a step 2: requiring and setting up five mini.nvim submodules
+-- Ruling S2-T11a step 2: requiring and setting up the mini.nvim submodules
 -- at startup measured ~6-10ms. None of it is needed before the first draw
 -- after startup -- same reasoning as options.lua's clipboard deferral --
 -- so defer the whole block by one event-loop tick with vim.schedule. This
@@ -16,5 +17,4 @@ vim.schedule(function()
   require('mini.surround').setup()
   require('mini.ai').setup { n_lines = 500 }
   require('mini.pairs').setup()
-  require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
 end)
