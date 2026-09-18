@@ -1,13 +1,19 @@
 vim.schedule(function()
   require('telescope').setup {
     defaults = {
+      -- NvChad's telescope proportions and prompt glyphs.
+      prompt_prefix = '   ',
+      selection_caret = '  ',
+      entry_prefix = '   ',
       sorting_strategy = 'ascending',
       layout_strategy = 'horizontal',
       layout_config = {
         prompt_position = 'top',
         preview_cutoff = 120,
-        horizontal = { preview_width = 0.5 },
-        vertical = { mirror = true },
+        horizontal = { preview_width = 0.55, results_width = 0.8 },
+        vertical = { mirror = false },
+        width = 0.87,
+        height = 0.80,
       },
     },
     extensions = {

@@ -370,9 +370,21 @@ end)
 -- away.
 check("telescope setup{} took effect, per telescope's own resolved config", function()
   local values = require('telescope.config').values
+  -- Which assertions carry the weight: sorting_strategy, prompt_position,
+  -- prompt_prefix and the width/height pair all differ from telescope's own
+  -- defaults ('descending', 'bottom', '> ', 0.8/0.9), so each one fails if
+  -- setup{} stops being applied. layout_strategy is asserted for completeness
+  -- but MATCHES telescope's default, so it discriminates nothing on its own --
+  -- do not "simplify" this check down to that line.
   eq(values.sorting_strategy, 'ascending', 'sorting_strategy')
   eq(values.layout_strategy, 'horizontal', 'layout_strategy')
   eq(values.layout_config.prompt_position, 'top', 'layout_config.prompt_position')
+  -- NvChad's proportions and prompt glyphs.
+  eq(values.prompt_prefix, '   ', 'prompt_prefix')
+  eq(values.selection_caret, '  ', 'selection_caret')
+  eq(values.layout_config.width, 0.87, 'layout_config.width')
+  eq(values.layout_config.height, 0.80, 'layout_config.height')
+  eq(values.layout_config.horizontal.preview_width, 0.55, 'horizontal.preview_width')
 end)
 
 check('telescope keymaps are bound', function()
