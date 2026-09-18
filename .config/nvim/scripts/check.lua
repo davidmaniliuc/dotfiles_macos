@@ -387,6 +387,20 @@ check("telescope setup{} took effect, per telescope's own resolved config", func
   eq(values.layout_config.horizontal.preview_width, 0.55, 'horizontal.preview_width')
 end)
 
+-- The signature of the NvChad bordered look: each pane's border fg equals its
+-- own bg, so the borders vanish and the panes read as detached blocks. A plain
+-- carbonfox install gives TelescopeBorder a visible grey fg (#535353) over a
+-- nil bg, so this fails the moment the theme block stops being applied -- and
+-- it also covers the ColorScheme autocmd, since the suite re-applies nothing.
+check('telescope wears the bordered theme', function()
+  local border = vim.api.nvim_get_hl(0, { name = 'TelescopeBorder', link = false })
+  assert(border.fg and border.bg, 'TelescopeBorder has no explicit fg/bg')
+  eq(border.fg, border.bg, 'TelescopeBorder fg vs bg')
+  local prompt = vim.api.nvim_get_hl(0, { name = 'TelescopePromptBorder', link = false })
+  eq(prompt.fg, prompt.bg, 'TelescopePromptBorder fg vs bg')
+  assert(prompt.bg ~= border.bg, 'prompt and results share a background, so the panes do not separate')
+end)
+
 check('telescope keymaps are bound', function()
   assert_maps('n', {
     '<Space><Space>',
