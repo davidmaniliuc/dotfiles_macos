@@ -91,6 +91,13 @@ check('completeopt enables native fuzzy popup completion', function()
   eq(vim.o.completeopt, 'menu,menuone,noselect,popup,fuzzy', 'completeopt')
 end)
 
+check('native treesitter folding is enabled', function()
+  eq(vim.o.foldmethod, 'expr', 'foldmethod')
+  eq(vim.o.foldexpr, 'v:lua.vim.treesitter.foldexpr()', 'foldexpr')
+  eq(vim.o.foldlevel, 99, 'foldlevel')
+  eq(vim.o.foldenable, true, 'foldenable')
+end)
+
 -- Rewritten per controller ruling B1: the brief's original version inspected
 -- each autocmd's `.command` field, which is always '' for callback-based
 -- autocmds (every autocmd in this config uses a callback), so it could never

@@ -42,6 +42,13 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 vim.o.autoread = true
 
+-- Native folding powered by Tree-sitter. Start buffers expanded while keeping
+-- all of Neovim's standard z folding commands available.
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldenable = true
+
 -- 0.12: one global border for every float. Replaces wrapping vim.lsp.buf.hover.
 vim.o.winborder = 'single'
 

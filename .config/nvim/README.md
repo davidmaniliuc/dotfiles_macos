@@ -56,6 +56,10 @@ Leader is `<Space>`.
 `-` oil · `<leader>F` format · `H` / `L` buffers · `<A-Tab>` toggle buffer tabs ·
 `<leader>bk` kill buffer · `<leader>bd` kill others · `s` surround prefix (`sa` add, `sd` delete, `sr` replace)
 
+Folding uses native Tree-sitter folds: `za` toggle · `zA` toggle recursively ·
+`zo` / `zO` open · `zc` / `zC` close · `zM` close all · `zR` open all ·
+`zm` / `zr` decrease/increase fold level.
+
 ## Maintaining
 
 ```vim
