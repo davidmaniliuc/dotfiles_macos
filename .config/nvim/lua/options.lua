@@ -1,4 +1,5 @@
-vim.o.termguicolors = true
+-- term16_dark uses the terminal's 16 ANSI colors, which termguicolors would ignore.
+vim.o.termguicolors = false
 vim.o.pumheight = 10
 vim.o.cmdheight = 0
 vim.o.conceallevel = 0

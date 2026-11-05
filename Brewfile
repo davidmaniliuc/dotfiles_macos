@@ -27,6 +27,7 @@ brew "go"
 brew "python@3.14"
 brew "grep"
 brew "hexyl"
+brew "helix"
 brew "htop"
 brew "imagemagick-full", link: true
 brew "libpq"

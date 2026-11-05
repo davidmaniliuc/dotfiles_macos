@@ -11,6 +11,9 @@ vim.schedule(function()
     options = {
       separator_style = 'slant',
 
+      -- Hide the tabs while only one buffer is open.
+      always_show_bufferline = false,
+
       max_name_length = 18,
       tab_size = 18,
 
@@ -33,6 +36,11 @@ vim.schedule(function()
       buffer_selected = {
         italic = false,
       },
+      -- term16_dark (termguicolors off): bufferline builds file-icon colors
+      -- from these tables, not from the theme's groups, so the inactive tabs
+      -- need their cterm bg here.
+      background = { ctermbg = 8 },
+      buffer_visible = { ctermbg = 8 },
     },
   }
 end)

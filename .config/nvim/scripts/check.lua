@@ -197,11 +197,10 @@ local EXPECTED_PLUGINS = {
   'conform.nvim',
   'oil.nvim',
   'mini.nvim',
-  'nightfox.nvim',
   'bufferline.nvim',
 }
 
-check('all 14 plugins are installed and active', function()
+check('all 13 plugins are installed and active', function()
   local active = {}
   for _, p in ipairs(vim.pack.get()) do
     if p.active then
@@ -244,8 +243,8 @@ check('lockfile exists at the config root', function()
 end)
 
 -- Task 3: theme and mini.nvim
-check('carbonfox colorscheme is active', function()
-  eq(vim.g.colors_name, 'carbonfox', 'colors_name')
+check('term16_dark colorscheme is active', function()
+  eq(vim.g.colors_name, 'term16_dark', 'colors_name')
 end)
 
 check('mini.icons mocks nvim-web-devicons', function()
@@ -266,10 +265,12 @@ end)
 -- `%!v:lua.nvim_bufferline()` is written into 'tabline' by bufferline.setup()
 -- and by nothing else, so this fails if the setup call is removed or errors --
 -- including the devicons-ordering failure, since bufferline asks for
--- nvim-web-devicons and only mini.icons' mock supplies it.
+-- nvim-web-devicons and only mini.icons' mock supplies it. The tabs hide
+-- while one buffer is open (always_show_bufferline = false), and the suite
+-- runs with one, so the tab line is hidden here.
 check('bufferline renders the tab line', function()
   eq(vim.o.tabline, '%!v:lua.nvim_bufferline()', 'tabline')
-  eq(vim.o.showtabline, 2, 'showtabline')
+  eq(vim.o.showtabline, 0, 'showtabline with one buffer')
   assert_maps('n', { '<A-Tab>' })
 end)
 
@@ -396,17 +397,17 @@ check("telescope setup{} took effect, per telescope's own resolved config", func
 end)
 
 -- The signature of the NvChad bordered look: each pane's border fg equals its
--- own bg, so the borders vanish and the panes read as detached blocks. A plain
--- carbonfox install gives TelescopeBorder a visible grey fg (#535353) over a
--- nil bg, so this fails the moment the theme block stops being applied -- and
--- it also covers the ColorScheme autocmd, since the suite re-applies nothing.
+-- own bg, so the borders vanish and the panes read as detached blocks. With
+-- the theme block not applied, TelescopeBorder has no explicit cterm fg/bg, so
+-- this fails the moment it stops being applied -- and it also covers the
+-- ColorScheme autocmd, since the suite re-applies nothing.
 check('telescope wears the bordered theme', function()
   local border = vim.api.nvim_get_hl(0, { name = 'TelescopeBorder', link = false })
-  assert(border.fg and border.bg, 'TelescopeBorder has no explicit fg/bg')
-  eq(border.fg, border.bg, 'TelescopeBorder fg vs bg')
+  assert(border.ctermfg and border.ctermbg, 'TelescopeBorder has no explicit ctermfg/ctermbg')
+  eq(border.ctermfg, border.ctermbg, 'TelescopeBorder ctermfg vs ctermbg')
   local prompt = vim.api.nvim_get_hl(0, { name = 'TelescopePromptBorder', link = false })
-  eq(prompt.fg, prompt.bg, 'TelescopePromptBorder fg vs bg')
-  assert(prompt.bg ~= border.bg, 'prompt and results share a background, so the panes do not separate')
+  eq(prompt.ctermfg, prompt.ctermbg, 'TelescopePromptBorder ctermfg vs ctermbg')
+  assert(prompt.ctermbg ~= border.ctermbg, 'prompt and results share a background, so the panes do not separate')
 end)
 
 check('telescope keymaps are bound', function()

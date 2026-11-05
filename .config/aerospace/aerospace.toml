@@ -108,6 +108,10 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace 1', 'layout floating', 'fullscreen']
 
 [[on-window-detected]]
+if.app-id = 'com.superlogical.rex'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
 if.app-id = 'net.imput.helium'
 run = 'move-node-to-workspace 2'
 
@@ -137,6 +141,10 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.rdc.macos'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]

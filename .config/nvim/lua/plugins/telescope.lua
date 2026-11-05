@@ -26,40 +26,48 @@ vim.schedule(function()
   require('telescope').load_extension 'ui-select'
 end)
 
--- NvChad's bordered telescope look, mapped onto carbonfox.
+-- NvChad's bordered telescope look, mapped onto term16_dark.
 --
 -- The trick is that each pane's border fg equals its own bg, so the borders
 -- vanish and the prompt, results and preview read as three detached blocks
 -- rather than one framed window. The prompt sits on a lighter background than
 -- the results so the split is visible without a drawn line.
+--
+-- term16_dark runs with termguicolors off, so these are ANSI indices.
 local theme = {
-  bg = '#0c0c0c', -- results + preview: a step darker than Normal (#161616)
-  prompt_bg = '#202020', -- prompt: a step lighter, so it separates
-  fg = '#f2f4f8',
-  black = '#161616',
-  red = '#ee5396',
-  green = '#25be6a',
-  selection = '#2a2a2a',
+  bg = 0, -- results + preview
+  prompt_bg = 8, -- prompt: lighter, so it separates
+  fg = 15,
+  black = 0,
+  red = 9,
+  green = 10,
+  selection = 8,
 }
 
 local function apply_telescope_theme()
-  local set = vim.api.nvim_set_hl
+  local function set(name, spec)
+    vim.api.nvim_set_hl(0, name, {
+      ctermfg = spec.fg and theme[spec.fg],
+      ctermbg = spec.bg and theme[spec.bg],
+      cterm = spec.bold and { bold = true } or nil,
+    })
+  end
   -- Results and preview: dark, borderless.
-  set(0, 'TelescopeNormal', { fg = theme.fg, bg = theme.bg })
-  set(0, 'TelescopeBorder', { fg = theme.bg, bg = theme.bg })
-  set(0, 'TelescopeResultsNormal', { fg = theme.fg, bg = theme.bg })
-  set(0, 'TelescopeResultsBorder', { fg = theme.bg, bg = theme.bg })
-  set(0, 'TelescopeResultsTitle', { fg = theme.bg, bg = theme.bg })
-  set(0, 'TelescopePreviewNormal', { fg = theme.fg, bg = theme.bg })
-  set(0, 'TelescopePreviewBorder', { fg = theme.bg, bg = theme.bg })
-  set(0, 'TelescopePreviewTitle', { fg = theme.black, bg = theme.green, bold = true })
+  set('TelescopeNormal', { fg = 'fg', bg = 'bg' })
+  set('TelescopeBorder', { fg = 'bg', bg = 'bg' })
+  set('TelescopeResultsNormal', { fg = 'fg', bg = 'bg' })
+  set('TelescopeResultsBorder', { fg = 'bg', bg = 'bg' })
+  set('TelescopeResultsTitle', { fg = 'bg', bg = 'bg' })
+  set('TelescopePreviewNormal', { fg = 'fg', bg = 'bg' })
+  set('TelescopePreviewBorder', { fg = 'bg', bg = 'bg' })
+  set('TelescopePreviewTitle', { fg = 'black', bg = 'green', bold = true })
   -- Prompt: lighter block, with a coloured title tab.
-  set(0, 'TelescopePromptNormal', { fg = theme.fg, bg = theme.prompt_bg })
-  set(0, 'TelescopePromptBorder', { fg = theme.prompt_bg, bg = theme.prompt_bg })
-  set(0, 'TelescopePromptTitle', { fg = theme.black, bg = theme.red, bold = true })
-  set(0, 'TelescopePromptPrefix', { fg = theme.red, bg = theme.prompt_bg })
-  set(0, 'TelescopeSelection', { fg = theme.fg, bg = theme.selection })
-  set(0, 'TelescopeMatching', { fg = theme.red, bold = true })
+  set('TelescopePromptNormal', { fg = 'fg', bg = 'prompt_bg' })
+  set('TelescopePromptBorder', { fg = 'prompt_bg', bg = 'prompt_bg' })
+  set('TelescopePromptTitle', { fg = 'black', bg = 'red', bold = true })
+  set('TelescopePromptPrefix', { fg = 'red', bg = 'prompt_bg' })
+  set('TelescopeSelection', { fg = 'fg', bg = 'selection' })
+  set('TelescopeMatching', { fg = 'red', bold = true })
 end
 
 apply_telescope_theme()
