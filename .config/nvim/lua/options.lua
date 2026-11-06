@@ -14,6 +14,19 @@ vim.o.relativenumber = true
 vim.o.statuscolumn = '%s%=%{v:relnum?v:relnum:v:lnum} '
 vim.o.showmode = false
 
+-- Helix-style mode label (NOR/INS/VIS/V-L/V-B) in front of Neovim's stock statusline.
+local mode_labels = {
+  n = 'NOR', i = 'INS', R = 'REP', c = 'CMD', t = 'TRM',
+  v = 'VIS', V = 'V-L', ['\22'] = 'V-B', s = 'SEL', S = 'S-L', ['\19'] = 'S-B',
+}
+function _G.statusline_mode()
+  local mode = vim.api.nvim_get_mode().mode:sub(1, 1)
+  return mode_labels[mode] or mode
+end
+vim.o.statusline = ' %{v:lua.statusline_mode()}   ' .. vim.api.nvim_get_option_info2('statusline', {}).default
+-- The statusline isn't redrawn on every mode switch by itself.
+vim.api.nvim_create_autocmd('ModeChanged', { command = 'redrawstatus' })
+
 -- Deferred: reading the system clipboard provider costs ~20ms at startup.
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
@@ -40,6 +53,7 @@ vim.o.expandtab = true
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 10
+vim.o.sidescrolloff = 5
 vim.o.confirm = true
 vim.o.autoread = true
 

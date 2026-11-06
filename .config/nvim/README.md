@@ -84,7 +84,8 @@ NVIM_APPNAME=nvim-next nvim --headless -c "luafile $PWD/scripts/check.lua" -c 'q
 
 No mason (system toolchains instead, so Claude Code sees the same binaries).
 No completion plugin (`vim.lsp.completion`). No DAP (debug in the terminal).
-No statusline plugin: the statusline is Neovim's stock one.
+No statusline plugin: the statusline is Neovim's stock one, with a Helix-style
+mode label (NOR/INS/VIS/V-L/V-B) prepended in `lua/options.lua`.
 No Claude Code integration plugin. No leap.nvim: its GitHub repository was
 emptied upstream (2026-09-07, the author moved to Codeberg), so the motion
 layer was dropped by choice rather than repointed at a new source. No autosave
