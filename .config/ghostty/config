@@ -25,7 +25,3 @@ keybind = cmd+g>x=close_surface
 keybind = global:cmd+shift+space=toggle_quick_terminal
 quick-terminal-position = center
 quick-terminal-size = 50%,50%
-
-# background-opacity = 0.98
-# background-blur = true
-# vim: ft=ini
