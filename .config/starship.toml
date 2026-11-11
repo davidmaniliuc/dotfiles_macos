@@ -15,9 +15,9 @@ light = '#D4BE98'
 red = "#cc241d"
 
 [palettes.carbonfox]
-dark = '#0C0C0C'
-light = '#f2f4f8'
-red = "#ee5396"
+dark = "black"
+light = "bright-white"
+red = "red"
 
 [directory]
 format = "[ $path ](fg:light bg:dark)"
